@@ -1,0 +1,21 @@
+﻿@using System.Net.Http
+@using System.Net.Http.Json
+@using BlazorWasm.FoodDelivery.Services
+@using Microsoft.AspNetCore.Components.Forms
+@using Microsoft.AspNetCore.Components.Routing
+@using Microsoft.AspNetCore.Components.Web
+@using Microsoft.AspNetCore.Components.Web.Virtualization
+@using Microsoft.AspNetCore.Components.WebAssembly.Http
+@using Microsoft.JSInterop
+@using BlazorWasm.FoodDelivery
+@using BlazorWasm.FoodDelivery.Layout
+@using BlazorWasm.FoodDelivery.Models
+@using MudBlazor
+@using BlazorWasm.FoodDelivery.Pages.PopularFood
+@using BlazorWasm.FoodDelivery.Pages.Notification
+@using BlazorWasm.FoodDelivery.Pages.Cart
+@using BlazorWasm.FoodDelivery.Pages.CartSlide
+@inject FoodService FoodService
+@inject Blazored.LocalStorage.ILocalStorageService LocalStorageService
+@inject IDbService DbService
+@inject NavigationManager NavigationManager

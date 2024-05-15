@@ -1,0 +1,31 @@
+﻿@implements IDisposable
+@inject IDbService DbService
+@inject NotificationStateContainer StateContainer
+@inject VoucherStateContainer VoucherStateContainer
+
+<span class="cart__icon">
+    <i class="ri-shopping-basket-line" @onclick="OpenCart">
+    </i><span class="cart__badge">@StateContainer.Count</span>
+</span>
+
+@code {
+
+    protected override async Task OnInitializedAsync()
+    {
+        var result = await DbService.GetFoodsList();
+        StateContainer.Count = result.Select(x => x.Qty).Sum().ToString();
+        StateContainer.OnChange += StateHasChanged;
+    }
+
+    public void Dispose()
+    {
+        StateContainer.OnChange -= StateHasChanged;
+    }
+
+    async Task OpenCart()
+    {
+        VoucherStateContainer.Property = EnumCartType.Enable;
+        VoucherStateContainer.FoodList = await DbService.GetFoodsList();
+    }
+
+}

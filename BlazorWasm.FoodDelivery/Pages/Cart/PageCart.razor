@@ -1,0 +1,69 @@
+@page "/cart"
+@inject MenuStateContainer _MenuStateContainer
+
+<section>
+    <div class="container">
+        <h5 class="testimonial__subtitle mb-4">Cart</h5>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th>Image</th>
+                        <th>Product Title</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                        <th>Delete</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach (var item in FoodList)
+                    {
+                        <tr>
+                            <td class="text-center cart__img-box">
+                                <img
+                                    src="@item.FoodPhoto"
+                                    alt="">
+                            </td>
+                            <td class="text-center">@item.FoodName</td>
+                            <td class="text-center">$@item.FoodPrice</td>
+                            <td class="text-center">@item.Qty px</td>
+                            <td class="text-center cart__item-del">
+                                <i
+                                    class="ri-delete-bin-line">
+                                </i>
+                            </td>
+                        </tr>
+                    }
+                    </tbody>
+                </table>
+                <div class="mt-4">
+                    <h6>Subtotal: $<span class="cart__subtotal">@(FoodList.Select((x => x.FoodPrice)).Sum())</span></h6>
+                    @* <p>Taxes and shipping will calculate at checkout</p> *@
+                    <div class="cart__page-btn">
+                        <button class="addTOCart__btn me-4" @onclick="GoToPage">
+                            Continue Shopping
+                            @* <NavLink *@
+                            @*     href=""> *@
+                            @*     Continue *@
+                            @*     Shopping *@
+                            @* </NavLink> *@
+                        </button>
+                        @if (FoodList.Count > 0)
+                        {
+                            <button class="addTOCart__btn">
+                                <NavLink
+                                    href="checkout">
+                                    Proceed
+                                    to checkout
+                                </NavLink>
+                            </button>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
