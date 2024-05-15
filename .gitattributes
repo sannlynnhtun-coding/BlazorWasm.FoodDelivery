@@ -3,9 +3,9 @@
 ###############################################################################
 
 *.cs linguist-language=C#
-*.css linguist-language= none
-*.html linguist-language= none
-*.js linguist-language= none
+*.css linguist-language=none
+*.html linguist-language=none
+*.js linguist-language=none
 
 * text=auto
 
